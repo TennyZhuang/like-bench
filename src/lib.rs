@@ -69,13 +69,6 @@ pub fn like(target: &[u8], pattern: &[u8], escape: u32, recurse_level: usize) ->
                 }
             }
         };
-        // if recurse_level >= MAX_RECURSE_LEVEL {
-        //     // TODO: maybe we should test if stack is actually about to overflow.
-        //     return Err(box_err!(
-        //         "recurse level should not be larger than {}",
-        //         MAX_RECURSE_LEVEL
-        //     ));
-        // }
         // Pattern must be something like "%xxx".
         loop {
             let s = match tcs.next() {
@@ -87,6 +80,62 @@ pub fn like(target: &[u8], pattern: &[u8], escape: u32, recurse_level: usize) ->
             }
         }
     }
+}
+
+pub fn like_optimize(target: &[u8], pattern: &[u8], escape: u32) -> Result<bool, ()> {
+    // unsafe {
+    //     println!(
+    //         "{:?} {:?}",
+    //         std::str::from_utf8_unchecked(target),
+    //         std::str::from_utf8_unchecked(pattern)
+    //     );
+    // }
+    let mut px = 0;
+    let mut tx = 0;
+    let mut next_px = 0;
+    let mut next_tx = 0;
+    while px < pattern.len() || tx < target.len() {
+        // println!("{} {}", px, tx);
+        if px < pattern.len() {
+            let c = pattern[px];
+            match c {
+                b'_' => {
+                    if tx < target.len() {
+                        px += 1;
+                        tx += 1;
+                        continue;
+                    }
+                }
+                b'%' => {
+                    next_px = px;
+                    next_tx = tx + 1;
+                    px += 1;
+                    continue;
+                }
+                mut pc => {
+                    if pc as u32 == escape && px + 1 < pattern.len() {
+                        px += 1;
+                        pc = pattern[px];
+                    }
+                    if tx < target.len() && target[tx] == pc {
+                        tx += 1;
+                        px += 1;
+                        continue;
+                    }
+                }
+            }
+        }
+        // Mismatch and backtrace.
+        if 0 < next_tx && next_tx <= target.len() {
+            px = next_px;
+            tx = next_tx;
+            continue;
+        }
+        return Ok(false);
+    }
+
+    // println!("end: {} {}", px, tx);
+    Ok(px == pattern.len())
 }
 
 pub fn like_to_regex(pattern: &[u8], escape: u32) -> regex::Regex {
@@ -111,31 +160,6 @@ pub fn like_to_regex(pattern: &[u8], escape: u32) -> regex::Regex {
     res.push('$');
     regex::Regex::new(&res).unwrap()
 }
-
-// pub fn like_regexp(target: &[u8], pattern: &[u8], escape: u32, _recurse_level: usize) -> Result<bool, ()> {
-//     let mut pcs = pattern.iter();
-//     let mut res = String::from("^");
-//     loop {
-//         match pcs.next().cloned() {
-//             Some(b'%') => res.push_str(".*"),
-//             Some(b'_') => res.push('.'),
-//             Some(mut c) => {
-//                 if c as u32 == escape {
-//                     let next = pcs.next().map_or(escape as u8, |&c| u8::from(c));
-//                     c = next;
-//                 }
-//                 let mut s = String::new();
-//                 s.push(c as char);
-//                 res.push_str(&regex::escape(&s));
-//             }
-//             None => break,
-//         };
-//     }
-//     res.push('$');
-//     let reg = regex::Regex::new(&res).unwrap();
-
-//     Ok(reg.is_match(std::str::from_utf8(target).unwrap()))
-// }
 
 #[cfg(test)]
 mod tests {
@@ -173,13 +197,25 @@ mod tests {
         (r#"3hello"#, r#"3%hello"#, '3', Some(0)),
         (r#"3hello"#, r#"__hello"#, '_', Some(0)),
         (r#"3hello"#, r#"%_hello"#, '%', Some(1)),
+        // special case
+        (r#"aaaaaaaaaaaaaaaaaaaa"#, r#"a%a%a%a%a"#, '\\', Some(1)),
     ];
 
     #[test]
     fn test_like() {
         for (target, pattern, escape, expected) in cases {
-            let output =
-                like(target.as_bytes(), pattern.as_bytes(), *escape as u32, 1).unwrap() as i64;
+            // let output =
+            //     like(target.as_bytes(), pattern.as_bytes(), *escape as u32, 1).unwrap() as i64;
+            // assert_eq!(
+            //     output,
+            //     expected.unwrap(),
+            //     "target={}, pattern={}, escape={}",
+            //     target,
+            //     pattern,
+            //     escape
+            // );
+            let output = like_optimize(target.as_bytes(), pattern.as_bytes(), *escape as u32)
+                .unwrap() as i64;
             assert_eq!(
                 output,
                 expected.unwrap(),
@@ -194,9 +230,33 @@ mod tests {
     #[bench]
     fn bench_like(b: &mut Bencher) {
         b.iter(|| {
-            for (target, pattern, escape, expected) in cases.clone() {
+            for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
+                // if i != cases.len() - 1 {
+                //     continue;
+                // }
                 let output =
                     like(target.as_bytes(), pattern.as_bytes(), *escape as u32, 1).unwrap() as i64;
+                assert_eq!(
+                    output,
+                    expected.unwrap(),
+                    "target={}, pattern={}, escape={}",
+                    target,
+                    pattern,
+                    escape
+                );
+            }
+        });
+    }
+
+    #[bench]
+    fn bench_like_optimize(b: &mut Bencher) {
+        b.iter(|| {
+            for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
+                // if i != cases.len() - 1 {
+                //     continue;
+                // }
+                let output = like_optimize(target.as_bytes(), pattern.as_bytes(), *escape as u32)
+                    .unwrap() as i64;
                 assert_eq!(
                     output,
                     expected.unwrap(),
@@ -218,6 +278,9 @@ mod tests {
 
         b.iter(|| {
             for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
+                // if i != cases.len() - 1 {
+                //     continue;
+                // }
                 let reg = &regs[i];
                 let output = unsafe {
                     reg.is_match(std::str::from_utf8_unchecked(target.as_bytes())) as i64
