@@ -16,8 +16,6 @@ extern crate test;
 
 use std::slice::Iter;
 
-const MAX_RECURSE_LEVEL: usize = 1024;
-
 // Do match until '%' is found.
 #[inline]
 fn partial_like(tcs: &mut Iter<'_, u8>, pcs: &mut Iter<'_, u8>, escape: u32) -> Option<bool> {
@@ -198,7 +196,12 @@ mod tests {
         (r#"3hello"#, r#"__hello"#, '_', Some(0)),
         (r#"3hello"#, r#"%_hello"#, '%', Some(1)),
         // special case
-        (r#"aaaaaaaaaaaaaaaaaaaa"#, r#"a%a%a%a%a"#, '\\', Some(1)),
+        (
+            r#"aaaaaaaaaaaaaaaaaaaaaaaaaaa"#,
+            r#"a%a%a%a%a%a%a%a%b"#,
+            '\\',
+            Some(0),
+        ),
     ];
 
     #[test]
@@ -227,73 +230,73 @@ mod tests {
         }
     }
 
-    #[bench]
-    fn bench_like(b: &mut Bencher) {
-        b.iter(|| {
-            for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
-                // if i != cases.len() - 1 {
-                //     continue;
-                // }
-                let output =
-                    like(target.as_bytes(), pattern.as_bytes(), *escape as u32, 1).unwrap() as i64;
-                assert_eq!(
-                    output,
-                    expected.unwrap(),
-                    "target={}, pattern={}, escape={}",
-                    target,
-                    pattern,
-                    escape
-                );
-            }
-        });
-    }
+    // #[bench]
+    // fn bench_like(b: &mut Bencher) {
+    //     b.iter(|| {
+    //         for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
+    //             // if i != cases.len() - 1 {
+    //             //     continue;
+    //             // }
+    //             let output =
+    //                 like(target.as_bytes(), pattern.as_bytes(), *escape as u32, 1).unwrap() as i64;
+    //             assert_eq!(
+    //                 output,
+    //                 expected.unwrap(),
+    //                 "target={}, pattern={}, escape={}",
+    //                 target,
+    //                 pattern,
+    //                 escape
+    //             );
+    //         }
+    //     });
+    // }
 
-    #[bench]
-    fn bench_like_optimize(b: &mut Bencher) {
-        b.iter(|| {
-            for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
-                // if i != cases.len() - 1 {
-                //     continue;
-                // }
-                let output = like_optimize(target.as_bytes(), pattern.as_bytes(), *escape as u32)
-                    .unwrap() as i64;
-                assert_eq!(
-                    output,
-                    expected.unwrap(),
-                    "target={}, pattern={}, escape={}",
-                    target,
-                    pattern,
-                    escape
-                );
-            }
-        });
-    }
+    // #[bench]
+    // fn bench_like_optimize(b: &mut Bencher) {
+    //     b.iter(|| {
+    //         for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
+    //             // if i != cases.len() - 1 {
+    //             //     continue;
+    //             // }
+    //             let output = like_optimize(target.as_bytes(), pattern.as_bytes(), *escape as u32)
+    //                 .unwrap() as i64;
+    //             assert_eq!(
+    //                 output,
+    //                 expected.unwrap(),
+    //                 "target={}, pattern={}, escape={}",
+    //                 target,
+    //                 pattern,
+    //                 escape
+    //             );
+    //         }
+    //     });
+    // }
 
-    #[bench]
-    fn bench_like_reg(b: &mut Bencher) {
-        let regs: Vec<_> = cases
-            .iter()
-            .map(|(_, pattern, escape, _)| like_to_regex(pattern.as_bytes(), *escape as u32))
-            .collect();
+    // #[bench]
+    // fn bench_like_reg(b: &mut Bencher) {
+    //     let regs: Vec<_> = cases
+    //         .iter()
+    //         .map(|(_, pattern, escape, _)| like_to_regex(pattern.as_bytes(), *escape as u32))
+    //         .collect();
 
-        b.iter(|| {
-            for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
-                // if i != cases.len() - 1 {
-                //     continue;
-                // }
-                let reg = &regs[i];
-                let output = unsafe {
-                    reg.is_match(std::str::from_utf8_unchecked(target.as_bytes())) as i64
-                };
-                assert_eq!(
-                    output,
-                    expected.unwrap(),
-                    "target={}, pattern={}, escape={}",
-                    target,
-                    pattern,
-                    escape
-                );
-            }
-        });
-    }
+    //     b.iter(|| {
+    //         for (i, (target, pattern, escape, expected)) in cases.iter().enumerate() {
+    //             // if i != cases.len() - 1 {
+    //             //     continue;
+    //             // }
+    //             let reg = &regs[i];
+    //             let output = unsafe {
+    //                 reg.is_match(std::str::from_utf8_unchecked(target.as_bytes())) as i64
+    //             };
+    //             assert_eq!(
+    //                 output,
+    //                 expected.unwrap(),
+    //                 "target={}, pattern={}, escape={}",
+    //                 target,
+    //                 pattern,
+    //                 escape
+    //             );
+    //         }
+    //     });
+    // }
 }

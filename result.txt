@@ -1,0 +1,305 @@
+like_optimize 0         time:   [16.861 ns 17.087 ns 17.396 ns]
+Found 18 outliers among 100 measurements (18.00%)
+  7 (7.00%) high mild
+  11 (11.00%) high severe
+
+like 1                  time:   [18.833 ns 19.629 ns 21.062 ns]
+Found 12 outliers among 100 measurements (12.00%)
+  4 (4.00%) high mild
+  8 (8.00%) high severe
+
+like_optimize 1         time:   [27.451 ns 27.755 ns 28.046 ns]
+Found 5 outliers among 100 measurements (5.00%)
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+
+like 2                  time:   [12.410 ns 12.462 ns 12.525 ns]
+Found 19 outliers among 100 measurements (19.00%)
+  3 (3.00%) high mild
+  16 (16.00%) high severe
+
+like_optimize 2         time:   [15.834 ns 15.979 ns 16.184 ns]
+Found 12 outliers among 100 measurements (12.00%)
+  4 (4.00%) high mild
+  8 (8.00%) high severe
+
+like 3                  time:   [18.097 ns 18.596 ns 19.410 ns]
+Found 11 outliers among 100 measurements (11.00%)
+  3 (3.00%) high mild
+  8 (8.00%) high severe
+
+like_optimize 3         time:   [24.156 ns 24.321 ns 24.503 ns]
+Found 6 outliers among 100 measurements (6.00%)
+  2 (2.00%) high mild
+  4 (4.00%) high severe
+
+like 4                  time:   [11.793 ns 11.923 ns 12.082 ns]
+Found 15 outliers among 100 measurements (15.00%)
+  5 (5.00%) high mild
+  10 (10.00%) high severe
+
+like_optimize 4         time:   [8.5025 ns 8.5476 ns 8.5985 ns]
+Found 10 outliers among 100 measurements (10.00%)
+  4 (4.00%) high mild
+  6 (6.00%) high severe
+
+like 5                  time:   [13.370 ns 13.870 ns 14.451 ns]
+Found 8 outliers among 100 measurements (8.00%)
+  5 (5.00%) high mild
+  3 (3.00%) high severe
+
+like_optimize 5         time:   [9.4471 ns 9.4861 ns 9.5303 ns]
+Found 10 outliers among 100 measurements (10.00%)
+  1 (1.00%) low mild
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+
+like 6                  time:   [8.7161 ns 8.7443 ns 8.7774 ns]
+Found 12 outliers among 100 measurements (12.00%)
+  7 (7.00%) high mild
+  5 (5.00%) high severe
+
+like_optimize 6         time:   [7.0173 ns 7.0615 ns 7.1111 ns]
+Found 11 outliers among 100 measurements (11.00%)
+  6 (6.00%) high mild
+  5 (5.00%) high severe
+
+like 7                  time:   [12.961 ns 13.024 ns 13.090 ns]
+Found 7 outliers among 100 measurements (7.00%)
+  7 (7.00%) high mild
+
+like_optimize 7         time:   [8.9324 ns 8.9712 ns 9.0133 ns]
+Found 10 outliers among 100 measurements (10.00%)
+  2 (2.00%) low mild
+  4 (4.00%) high mild
+  4 (4.00%) high severe
+
+like 8                  time:   [18.701 ns 18.749 ns 18.808 ns]
+Found 16 outliers among 100 measurements (16.00%)
+  6 (6.00%) high mild
+  10 (10.00%) high severe
+
+like_optimize 8         time:   [9.9531 ns 10.023 ns 10.097 ns]
+Found 8 outliers among 100 measurements (8.00%)
+  5 (5.00%) high mild
+  3 (3.00%) high severe
+
+like 9                  time:   [8.2116 ns 8.2823 ns 8.3628 ns]
+Found 6 outliers among 100 measurements (6.00%)
+  3 (3.00%) high mild
+  3 (3.00%) high severe
+
+like_optimize 9         time:   [10.736 ns 10.961 ns 11.270 ns]
+Found 15 outliers among 100 measurements (15.00%)
+  5 (5.00%) high mild
+  10 (10.00%) high severe
+
+like 10                 time:   [11.812 ns 11.959 ns 12.127 ns]
+Found 6 outliers among 100 measurements (6.00%)
+  3 (3.00%) high mild
+  3 (3.00%) high severe
+
+like_optimize 10        time:   [9.5306 ns 9.6444 ns 9.7861 ns]
+Found 11 outliers among 100 measurements (11.00%)
+  8 (8.00%) high mild
+  3 (3.00%) high severe
+
+like 11                 time:   [5.5161 ns 5.6200 ns 5.7514 ns]
+Found 15 outliers among 100 measurements (15.00%)
+  3 (3.00%) high mild
+  12 (12.00%) high severe
+
+like_optimize 11        time:   [7.7264 ns 7.7466 ns 7.7695 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+
+like 12                 time:   [9.5980 ns 10.018 ns 10.583 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  4 (4.00%) high mild
+  5 (5.00%) high severe
+
+like_optimize 12        time:   [7.8313 ns 8.1772 ns 8.6466 ns]
+Found 6 outliers among 100 measurements (6.00%)
+  2 (2.00%) high mild
+  4 (4.00%) high severe
+
+like 13                 time:   [13.708 ns 14.124 ns 14.706 ns]
+Found 11 outliers among 100 measurements (11.00%)
+  3 (3.00%) high mild
+  8 (8.00%) high severe
+
+like_optimize 13        time:   [24.276 ns 24.720 ns 25.416 ns]
+Found 8 outliers among 100 measurements (8.00%)
+  8 (8.00%) high severe
+
+like 14                 time:   [15.464 ns 15.730 ns 16.117 ns]
+Found 10 outliers among 100 measurements (10.00%)
+  3 (3.00%) high mild
+  7 (7.00%) high severe
+
+like_optimize 14        time:   [24.337 ns 24.757 ns 25.253 ns]
+Found 6 outliers among 100 measurements (6.00%)
+  2 (2.00%) high mild
+  4 (4.00%) high severe
+
+like 15                 time:   [6.9310 ns 7.3981 ns 7.9550 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+
+like_optimize 15        time:   [7.2542 ns 7.4535 ns 7.6568 ns]
+Found 5 outliers among 100 measurements (5.00%)
+  4 (4.00%) high mild
+  1 (1.00%) high severe
+
+like 16                 time:   [9.3317 ns 9.3858 ns 9.4454 ns]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high severe
+
+like_optimize 16        time:   [7.4419 ns 7.5609 ns 7.6823 ns]
+Found 4 outliers among 100 measurements (4.00%)
+  1 (1.00%) high mild
+  3 (3.00%) high severe
+
+like 17                 time:   [13.585 ns 13.691 ns 13.816 ns]
+Found 7 outliers among 100 measurements (7.00%)
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+
+like_optimize 17        time:   [25.069 ns 29.267 ns 34.377 ns]
+Found 13 outliers among 100 measurements (13.00%)
+  2 (2.00%) high mild
+  11 (11.00%) high severe
+
+like 18                 time:   [15.862 ns 16.006 ns 16.177 ns]
+Found 8 outliers among 100 measurements (8.00%)
+  5 (5.00%) high mild
+  3 (3.00%) high severe
+
+like_optimize 18        time:   [23.570 ns 24.696 ns 26.328 ns]
+Found 10 outliers among 100 measurements (10.00%)
+  4 (4.00%) high mild
+  6 (6.00%) high severe
+
+like 19                 time:   [14.930 ns 15.066 ns 15.233 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) high mild
+  6 (6.00%) high severe
+
+like_optimize 19        time:   [21.748 ns 21.917 ns 22.156 ns]
+Found 13 outliers among 100 measurements (13.00%)
+  6 (6.00%) high mild
+  7 (7.00%) high severe
+
+like 20                 time:   [15.415 ns 15.706 ns 16.046 ns]
+Found 13 outliers among 100 measurements (13.00%)
+  4 (4.00%) high mild
+  9 (9.00%) high severe
+
+like_optimize 20        time:   [22.192 ns 22.466 ns 22.740 ns]
+Found 4 outliers among 100 measurements (4.00%)
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+
+like 21                 time:   [16.088 ns 16.575 ns 17.301 ns]
+Found 15 outliers among 100 measurements (15.00%)
+  8 (8.00%) high mild
+  7 (7.00%) high severe
+
+like_optimize 21        time:   [34.712 ns 36.161 ns 38.027 ns]
+Found 16 outliers among 100 measurements (16.00%)
+  2 (2.00%) high mild
+  14 (14.00%) high severe
+
+like 22                 time:   [4.4703 ns 4.4926 ns 4.5190 ns]
+Found 17 outliers among 100 measurements (17.00%)
+  10 (10.00%) high mild
+  7 (7.00%) high severe
+
+like_optimize 22        time:   [17.972 ns 18.545 ns 19.394 ns]
+Found 14 outliers among 100 measurements (14.00%)
+  3 (3.00%) high mild
+  11 (11.00%) high severe
+
+like 23                 time:   [5.4208 ns 5.8703 ns 6.4283 ns]
+Found 16 outliers among 100 measurements (16.00%)
+  4 (4.00%) high mild
+  12 (12.00%) high severe
+
+like_optimize 23        time:   [31.734 ns 36.802 ns 42.542 ns]
+Found 7 outliers among 100 measurements (7.00%)
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+
+like 24                 time:   [5.1563 ns 5.3289 ns 5.4965 ns]
+Found 3 outliers among 100 measurements (3.00%)
+  1 (1.00%) high mild
+  2 (2.00%) high severe
+
+like_optimize 24        time:   [2.8870 ns 2.9472 ns 3.0344 ns]
+Found 15 outliers among 100 measurements (15.00%)
+  10 (10.00%) high mild
+  5 (5.00%) high severe
+
+like 25                 time:   [4.8427 ns 4.8637 ns 4.8877 ns]
+Found 14 outliers among 100 measurements (14.00%)
+  3 (3.00%) high mild
+  11 (11.00%) high severe
+
+like_optimize 25        time:   [3.6374 ns 3.8350 ns 4.0765 ns]
+Found 11 outliers among 100 measurements (11.00%)
+  5 (5.00%) high mild
+  6 (6.00%) high severe
+
+like 26                 time:   [13.738 ns 13.886 ns 14.063 ns]
+Found 12 outliers among 100 measurements (12.00%)
+  6 (6.00%) high mild
+  6 (6.00%) high severe
+
+like_optimize 26        time:   [12.888 ns 13.082 ns 13.322 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  4 (4.00%) high mild
+  5 (5.00%) high severe
+
+like 27                 time:   [4.6108 ns 4.6396 ns 4.6745 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  4 (4.00%) high mild
+  5 (5.00%) high severe
+
+like_optimize 27        time:   [3.0375 ns 3.1314 ns 3.2280 ns]
+Found 14 outliers among 100 measurements (14.00%)
+  7 (7.00%) high mild
+  7 (7.00%) high severe
+
+like 28                 time:   [4.8385 ns 5.0502 ns 5.3368 ns]
+Found 14 outliers among 100 measurements (14.00%)
+  4 (4.00%) high mild
+  10 (10.00%) high severe
+
+like_optimize 28        time:   [5.9186 ns 6.2495 ns 6.6424 ns]
+Found 15 outliers among 100 measurements (15.00%)
+  6 (6.00%) high mild
+  9 (9.00%) high severe
+
+like 29                 time:   [14.004 ns 14.573 ns 15.403 ns]
+Found 10 outliers among 100 measurements (10.00%)
+  3 (3.00%) high mild
+  7 (7.00%) high severe
+
+like_optimize 29        time:   [9.7671 ns 9.8921 ns 10.031 ns]
+Found 6 outliers among 100 measurements (6.00%)
+  5 (5.00%) high mild
+  1 (1.00%) high severe
+
+Benchmarking like 30: Warming up for 3.0000 s
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 31.8s or reduce sample count to 20
+like 30                 time:   [5.9190 ms 6.0999 ms 6.3313 ms]
+Found 10 outliers among 100 measurements (10.00%)
+  5 (5.00%) high mild
+  5 (5.00%) high severe
+
+like_optimize 30        time:   [67.743 ns 68.207 ns 68.726 ns]
+Found 8 outliers among 100 measurements (8.00%)
+  2 (2.00%) high mild
+  6 (6.00%) high severe

@@ -1,5 +1,5 @@
 [package]
-name = "like-bench"
+name = "like_bench"
 version = "0.1.0"
 authors = ["TennyZhuang <zty0826@gmail.com>"]
 edition = "2018"
@@ -9,3 +9,14 @@ edition = "2018"
 [dependencies]
 
 regex = "1.1"
+
+[profile.bench]
+optimize-level = 3
+lto = true
+
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "my_benchmark"
+harness = false
